@@ -9,6 +9,7 @@
     "sourceMap": false,
     "outDir": "./dist",
     "rootDir": "./src",
+    "skipLibCheck": true,
     "baseUrl": "./",
     "noLib": false
   },

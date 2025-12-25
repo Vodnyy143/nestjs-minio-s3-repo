@@ -6,7 +6,7 @@
   </a>
 </div>
 
-<h3 align="center">NestJS npm Package Starter</h3>
+<h3 align="center">NestJS npm Package Minio S3</h3>
 
 <div align="center">
   <a href="https://nestjs.com" target="_blank">
@@ -16,12 +16,8 @@
 
 ### Installation
 
-1. Clone the repo
-2. Run npm/yarn install
-
 ```bash
-cd nestjs-package-starter
-npm install
+npm install nestjs-minio-s3
 ```
 
 ## Change Log
@@ -34,7 +30,7 @@ Contributions welcome! See [Contributing](CONTRIBUTING.md).
 
 ## Author
 
-**John Biundo (Y Prospect on [Discord](https://discord.gg/G7Qnnhy))**
+**Artem Kosyrev**
 
 ## License
 
