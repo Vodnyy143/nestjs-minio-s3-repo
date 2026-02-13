@@ -18,13 +18,17 @@ import { MinioBucketConfig } from './interfaces/minio-bucket-config.interface';
 export class MinioService implements OnModuleInit {
   private readonly logger = new Logger(MinioService.name);
   private s3Client: S3Client;
+  private readonly endpoint: string;
 
   constructor(
     @Inject(MINIO_MODULE_OPTIONS)
     private readonly options: MinioModuleOptions,
   ) {
+    const protocol = this.options.useSSL ? 'https' : 'http';
+    this.endpoint = `${protocol}://${this.options.host}:${this.options.port}`;
+
     this.s3Client = new S3Client({
-      endpoint: this.options.endpoint,
+      endpoint: this.endpoint,
       region: this.options.region || 'us-east-1',
       credentials: {
         accessKeyId: this.options.accessKey,
@@ -185,7 +189,7 @@ export class MinioService implements OnModuleInit {
   }
 
   getPublicUrl(bucketName: string, key: string): string {
-    const url = new URL(this.options.endpoint);
+    const url = new URL(this.endpoint);
 
     url.pathname = `/${bucketName}/${key}`;
 

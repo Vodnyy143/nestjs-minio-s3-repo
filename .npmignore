@@ -1,0 +1,16 @@
+src
+test
+*.spec.ts
+*.test.ts
+tsconfig.json
+tslint.json
+.eslintrc.js
+.prettierrc
+.gitignore
+.git
+node_modules
+coverage
+*.log
+.DS_Store
+.vscode
+.idea

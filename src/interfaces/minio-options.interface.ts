@@ -3,9 +3,9 @@ import {  Type } from '@nestjs/common';
 import { ModuleMetadata } from '@nestjs/common/interfaces/modules/module-metadata.interface';
 
 export interface MinioModuleOptions {
-  endpoint: string;
-  port?: number;
-  useSSL?: boolean;
+  host: string;
+  port: number;
+  useSSL: boolean;
   accessKey: string;
   secretKey: string;
   region?: string;

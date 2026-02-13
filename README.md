@@ -19,6 +19,14 @@
 ```bash
 npm install nestjs-minio-s3
 ```
+__OR__
+```bash
+yarn install nestjs-minio-s3
+```
+__OR__
+```bash
+pnpm install nestjs-minio-s3
+```
 
 ## Change Log
 
