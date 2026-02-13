@@ -1,6 +1,6 @@
 {
   "name": "nestjs-minio-s3",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "NestJS package Minio S3",
   "author": "Artem Kosyrev <cosinusgradusov90@gmail.com>",
   "license": "MIT",
