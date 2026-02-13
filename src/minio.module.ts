@@ -9,6 +9,7 @@ import {
 import { MINIO_BUCKET_TOKEN, MINIO_MODULE_OPTIONS } from './constants';
 import { MinioFeatureOptions } from './interfaces/minio-feature-options.interface';
 
+@Global()
 @Module({})
 export class MinioModule {
   static forRoot(options: MinioModuleOptions): DynamicModule {
