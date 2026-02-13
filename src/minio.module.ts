@@ -6,7 +6,8 @@ import {
   MinioModuleOptions,
   MinioOptionsFactory,
 } from './interfaces/minio-options.interface';
-import { MINIO_MODULE_OPTIONS } from './constants';
+import { MINIO_BUCKET_TOKEN, MINIO_MODULE_OPTIONS } from './constants';
+import { MinioFeatureOptions } from './interfaces/minio-feature-options.interface';
 
 @Global()
 @Module({})
@@ -32,6 +33,19 @@ export class MinioModule {
       providers: [...this.createAsyncProviders(options), MinioService],
       exports: [MinioService],
     };
+  }
+
+  static forFeature(options: MinioFeatureOptions): DynamicModule {
+    const bucketProvider: Provider = {
+      provide: MINIO_BUCKET_TOKEN,
+      useValue: options.bucketName,
+    };
+
+    return {
+      module: MinioModule,
+      providers: [bucketProvider],
+      exports: [bucketProvider],
+    }
   }
 
   private static createAsyncProviders(
