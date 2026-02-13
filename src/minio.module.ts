@@ -9,7 +9,6 @@ import {
 import { MINIO_BUCKET_TOKEN, MINIO_MODULE_OPTIONS } from './constants';
 import { MinioFeatureOptions } from './interfaces/minio-feature-options.interface';
 
-@Global()
 @Module({})
 export class MinioModule {
   static forRoot(options: MinioModuleOptions): DynamicModule {
@@ -41,9 +40,26 @@ export class MinioModule {
       useValue: options.bucketName,
     };
 
+    const bucketInitProvider: Provider = {
+      provide: 'BUCKET_INIT_' + options.bucketName.toUpperCase(),
+      inject: [MinioService],
+      useFactory: async (minioService: MinioService) => {
+        await minioService['createBucketIfNotExists'](options.bucketName);
+        if (options.policy) {
+          await minioService['setBucketPolicy']({
+            name: options.bucketName,
+            policy: options.policy,
+            customPolicy: options.customPolicy,
+          });
+        }
+
+        return options.bucketName;
+      },
+    };
+
     return {
       module: MinioModule,
-      providers: [bucketProvider],
+      providers: [bucketProvider, bucketInitProvider],
       exports: [bucketProvider],
     }
   }
